@@ -11,6 +11,7 @@
 
 namespace Kirki\Control;
 
+use Kirki\Core\Kirki;
 use Kirki\Control\Base;
 
 // Exit if accessed directly.
