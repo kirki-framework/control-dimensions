@@ -14,3 +14,5 @@ add_action(
         class_alias( 'Kirki\Control\Dimensions', 'Kirki_Control_Dimensions' );
     }
 );
+
+class_alias( 'Kirki\Field\Dimensions', 'Kirki_Field_Dimensions' );
