@@ -1,26 +1,15 @@
-.customize-control-kirki-dimensions {
-    position: relative;
+li {
+  &[data-kirki-parent-control-type="kirki-dimensions"] {
+    margin-bottom: 8px;
 
-    .wrapper {
-        border: 1px solid rgba(0, 0, 0, .1);
-        padding: 10px;
-
-        .control {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-
-            >div {
-                width: 48%;
-
-                h5 {
-                    margin: 10px 0 7px;
-                }
-
-                .inner {
-                    display: flex;
-                }
-            }
-        }
+    label {
+      display: flex !important;
+      justify-content: space-between;
+      align-items: center;
     }
+
+    input {
+      max-width: 100px;
+    }
+  }
 }

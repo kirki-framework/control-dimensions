@@ -1,17 +1,13 @@
-.customize-control-kirki-dimensions {
-  position: relative; }
-  .customize-control-kirki-dimensions .wrapper {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 10px; }
-    .customize-control-kirki-dimensions .wrapper .control {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between; }
-      .customize-control-kirki-dimensions .wrapper .control > div {
-        width: 48%; }
-        .customize-control-kirki-dimensions .wrapper .control > div h5 {
-          margin: 10px 0 7px; }
-        .customize-control-kirki-dimensions .wrapper .control > div .inner {
-          display: flex; }
+li[data-kirki-parent-control-type=kirki-dimensions] {
+  margin-bottom: 8px;
+}
+li[data-kirki-parent-control-type=kirki-dimensions] label {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}
+li[data-kirki-parent-control-type=kirki-dimensions] input {
+  max-width: 100px;
+}
 
 /*# sourceMappingURL=style.css.map */
