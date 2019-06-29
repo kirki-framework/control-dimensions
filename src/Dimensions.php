@@ -33,7 +33,7 @@ class Dimensions extends Field {
 
 		$config_id = isset( $args['kirki_config'] ) ? $args['kirki_config'] : 'global';
 
-		add_action( 'customize_controls_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+		add_action( 'customize_preview_init', [ $this, 'enqueue_scripts' ] );
 
 		$args['required'] = isset( $args['required'] ) ? (array) $args['required'] : [];
 		$config_id        = isset( $args['kirki_config'] ) ? $args['kirki_config'] : 'global';
@@ -75,7 +75,8 @@ class Dimensions extends Field {
 					'type'    => 'kirki-generic',
 					'default' => '',
 					'choices' => [
-						'type' => 'hidden',
+						'type'        => 'hidden',
+						'parent_type' => 'kirki-dimensions',
 					],
 				],
 				$args
@@ -85,9 +86,9 @@ class Dimensions extends Field {
 		$args['choices']           = isset( $args['choices'] ) ? $args['choices'] : [];
 		$args['choices']['labels'] = isset( $args['choices']['labels'] ) ? $args['choices']['labels'] : [];
 
-		$args['wrapper_atts'] = [
-			'data-kirki-parent-control-type' => 'kirki-dimensions',
-		];
+		if ( isset( $args['transport'] ) && 'auto' === $args['transport'] ) {
+			$args['transport'] = 'postMessage';
+		}
 
 		foreach ( $args['default'] as $choice => $default ) {
 			$label = $choice;
@@ -102,6 +103,10 @@ class Dimensions extends Field {
 						'label'          => '',
 						'description'    => $label,
 						'default'        => $default,
+						'wrapper_atts'   => [
+							'data-kirki-parent-control-type' => 'kirki-dimensions',
+						],
+						'js_vars'        => [],
 					],
 					$args
 				)
@@ -157,6 +162,6 @@ class Dimensions extends Field {
 	 */
 	public function enqueue_scripts() {
 		wp_enqueue_style( 'kirki-field-dimensions', URL::get_from_path( __DIR__ . '/style.css' ), [], '1.0' );
-		wp_enqueue_script( 'kirki-field-dimensions', URL::get_from_path( __DIR__ ) . 'script.js', [ 'kirki_auto_postmessage' ], '1.0', true );
+		wp_enqueue_script( 'kirki-field-dimensions', URL::get_from_path( __DIR__ ) . '/script.js', [ 'wp-hooks' ], '1.0', true );
 	}
 }
